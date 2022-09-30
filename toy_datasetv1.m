@@ -31,7 +31,7 @@ switch study_case
             prob = rand(1,1);
             if prob < an_probN
                 % ----------- Adding anomalies to the Nominal data -------------%
-                ini = randi(t-lon_an,1); %inn1 = [inn1; ini];
+                ini = randi(t-lon_an,1); 
                 train(i,ini:ini+lon_an-1)  = train(i,ini:ini+lon_an-1)*var0 + med0;
                 % --------------------------------------------------------------%
             end
@@ -48,10 +48,6 @@ switch study_case
             prob = rand(1,1);
             if prob < an_probN
                 % ----------- Adding anomalies to the Nominal data -------------%
-                % Do nothing: This is to avoid confusions. The nominal
-                % signals have mean value hjumps or variance changes, but
-                % the abnormal are zero-mean and unit variance sequences.
-                % --------------------------------------------------------------%
             else
                 ini = randi(t-lon_an,1);
                 train(i,ini:ini+lon_an-1)  = train(i,ini:ini+lon_an-1)*var_normal + med_normal;
@@ -62,18 +58,18 @@ switch study_case
 end
 
 %% ----------------------- Generate TEST dataset ----------------------
-Ntest = round(N*0.5); % number of new signals
+Ntest = round(N*0.5);
 
 Labels_total   = zeros(Ntest,t);
-labels   = zeros(Ntest,1); % Labels_where0 normal, 1 abnormal (antes estaba al revés)
+labels   = zeros(Ntest,1); 
 
 test    = zeros(Ntest,t);
 inn     = [];
 bb      = 1:t;
 
 %% ---->>>> Mean and variance of ANOMALIES for TEST dataset
-% mean_vector = 0; %[1.9, 0.8, 1]; %[0.6,0.8, 1,1.6,2];
-% var_vector  = 1.5; %[1.5, 1.9, 2];
+% mean_vector = 0; 
+% var_vector  = 1.5; 
 
 anomaly_var = var_vector(1);    % Variance (Abnormal)
 anomaly_m   = mean_vector(1);   % mean (Abnormal)
@@ -106,9 +102,6 @@ switch study_case
         
     case 2
         % m!=0 or var !=1
-        % Nota: este tipo de experimento no podría usarse para detectar en
-        % el tiempo ya que la señal anormal no tiene perturbancias en el
-        % tiempo
         
         for i = 1: Ntest
             
@@ -118,8 +111,6 @@ switch study_case
             if prob < an_prob
                 % Abnormal is m=0 and var = 1
                 labels(i) = 1;
-                % In this case, there are no avaiable labels for the
-                % anomaly in the time axis, i. e., Z_total
                 Labels_total(i,:) = 1;
                 
             else % Normal signal
