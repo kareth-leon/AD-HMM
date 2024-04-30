@@ -1,8 +1,9 @@
 # AD-HMM
-Matlab implementation demo for our paper: "Anomaly Detection and Classification in Multispectral Time Series based on Hidden Markov Models"
+Matlab implementation demo for our paper: "Anomaly Detection and Classification in Multispectral Time Series based on Hidden Markov Models" [Under construction]
 
 ## Paper
 [Anomaly Detection and Classification in Multispectral Time Series based on Hidden Markov Models](https://ieeexplore.ieee.org/abstract/document/9509347)
+[.pdf](https://hal.science/hal-03857425/document)
 
 Please cite our paper if you find it useful for your research.
 
